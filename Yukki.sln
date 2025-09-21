@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36221.1 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yukki", "Yukki\Yukki.csproj", "{DE577A30-1B8C-4A74-AACC-3830B0570B86}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE577A30-1B8C-4A74-AACC-3830B0570B86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE577A30-1B8C-4A74-AACC-3830B0570B86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE577A30-1B8C-4A74-AACC-3830B0570B86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE577A30-1B8C-4A74-AACC-3830B0570B86}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {289569BF-311F-4277-8FBA-5AB9E8B295D9}
+	EndGlobalSection
+EndGlobal
