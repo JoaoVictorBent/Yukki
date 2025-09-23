@@ -1,56 +1,84 @@
-﻿using System.Collections.ObjectModel;
+﻿using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Devices;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using Yukki.Resources.Models;
-using Microsoft.Maui.Devices;
 
 namespace Yukki
 {
+
+    public class SushiItem
+    {
+        public string? Nome { get; set; }
+        public string? Imagem { get; set; }
+        public string? Descricao { get; set; }
+    }
+
     public partial class MainPage : ContentPage
     {
 
-        // Dados de exemplo (você pode substituir por chamada API)
-        
-        public ObservableCollection<Produto> Ofertas { get; set; }
-        
-        public ObservableCollection<Produto> Rodizio { get; set; }
+        public List<SushiItem> Comidas { get; set; }
+
+        private double _windowHeight;
+        private double _windowWidth;
+
+        public double WindowHeight
+        {
+            get => _windowHeight;
+            set
+            {
+                if (_windowHeight != value)
+                {
+                    _windowHeight = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public double WindowWidth
+        {
+            get => _windowWidth;
+            set
+            {
+                if (_windowWidth != value)
+                {
+                    _windowWidth = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public MainPage()
         {
-            
+
             InitializeComponent();
 
-            Ofertas = new ObservableCollection<Produto>
-    {
-        new Produto { Nome="Yakissoba", Descricao="Massa saborosa", Imagem="foto.png" },
-        new Produto { Nome="Hot Roll", Descricao="Crocrante", Imagem="foto.png" },
-        new Produto { Nome="Sashimi", Descricao="Fresco", Imagem="foto.png" }
-    };
+            Comidas = new List<SushiItem>
+            {
+                new SushiItem { Nome = "Sushi", Imagem = "download5.jpeg", Descricao = "Arroz e peixe fresco" },
+                new SushiItem { Nome = "Temaki", Imagem = "download5.jpeg", Descricao = "Cone de alga com recheio" },
+                new SushiItem { Nome = "Sashimi", Imagem = "download5.jpeg", Descricao = "Fatias de peixe cru" },
+                new SushiItem { Nome = "Yakissoba", Imagem = "download5.jpeg", Descricao = "Macarrão com legumes" }
+            };
 
-            Rodizio = new ObservableCollection<Produto>
-    {
-        new Produto { Nome="Combo Sushi", Descricao="Peças selecionadas", Imagem="foto.png" },
-        new Produto { Nome="Combo Premium", Descricao="Especial da casa", Imagem="foto.png" },
-        new Produto { Nome="Temaki", Descricao="Cone recheado", Imagem="foto.png" }
-    };
 
             BindingContext = this;
 
-            double widht = this.Width;
-            double height = this.Height * 2;
+        }
 
-            this.SizeChanged += (s, e) =>
-            {
-                widht = this.Width;
-                height = this.Height * 2;
-                Body.WidthRequest = widht;
-                Body.HeightRequest = height;
-            };
-        
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+
+
+            WindowHeight = height * 1.4;
+            WindowWidth = width * 1;
         }
 
         // ---------- CLICK HANDLERS ADICIONADOS ----------
         // Abre/fecha o flyout se estiver usando Shell; senão mostra um ActionSheet como fallback.
-        
+
         private async void OnMenuClicked(object sender, EventArgs e)
         {
             

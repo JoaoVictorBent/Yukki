@@ -8,200 +8,333 @@
 
     <ScrollView>
 
-        <Grid RowDefinitions="0.16*,0.84*" ColumnDefinitions="*" x:Name="Body">
+        <Grid x:Name="Body"
+              HeightRequest="{Binding WindowHeight}"
+              WidthRequest="{Binding WindowWidth}">
 
-            <FlexLayout>
+            <Grid.RowDefinitions>
 
-                <AbsoluteLayout>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="auto"/>
 
-                    <!-- Header -->
-                    <Grid BackgroundColor="#FFD84D" 
-                          ColumnDefinitions="0.1*,0.8*,0.1*"
-                          RowDefinitions="0.1*,0.8*,0.1*"
-                          AbsoluteLayout.LayoutBounds="0.5,0,1,0.14"
-                          AbsoluteLayout.LayoutFlags="All"
-                          ZIndex="1">
+            </Grid.RowDefinitions>
 
-                        <ImageButton Source="menu_aberto.png"
-                                     Grid.Column="0"
-                                     Grid.Row="1"
-                                     BackgroundColor="Transparent"
-                                     Clicked="OnMenuClicked"/>
+            <!-- Header -->
 
-                        <ImageButton Source="bolsa_compras.png"
-                                     BackgroundColor="Transparent"
-                                     Grid.Column="2"
-                                     Grid.Row="1"
-                                     Clicked="OnCartClicked"/>
+            <Grid Grid.Row="0"
+                  BackgroundColor="#FFD84D" 
+                  ZIndex="1">
 
-                    </Grid>
+                <Grid.ColumnDefinitions>
 
-                    <!-- Capa -->
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="50"/>
 
-                    <Image Source="download2.jpeg"
-                       Aspect="AspectFill"
-                       AbsoluteLayout.LayoutBounds="0.5,1,1,0.86"
+                </Grid.ColumnDefinitions>
+
+                <ImageButton Source="menu_aberto.png"
+                             Padding="5"
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             MinimumHeightRequest="1"
+                             MinimumWidthRequest="1"
+                             HorizontalOptions="Center"
+                             BackgroundColor="Transparent"                                 
+                             Clicked="OnMenuClicked"/>
+
+                <ImageButton Source="bolsa_compras.png" 
+                             Padding="5"
+                             HeightRequest="40"
+                             WidthRequest="40"
+                             MinimumHeightRequest="1"
+                             MinimumWidthRequest="1"
+                             Grid.Column="2" 
+                             BackgroundColor="Transparent" 
+                             Clicked="OnCartClicked"/>
+
+                <Border Grid.Column="3" 
+                        BackgroundColor="White" 
+                        HeightRequest="40" 
+                        WidthRequest="40">
+
+                    <Border.StrokeShape>
+
+                        <RoundRectangle CornerRadius="90"/>
+
+                    </Border.StrokeShape>
+                    
+                </Border>
+
+            </Grid>
+            
+            <!-- Conjunto de capa, avatar e borda do corpo -->
+
+            <AbsoluteLayout Grid.Row="1">
+
+                <!-- Capa -->
+
+                <Image Source="download2.jpeg"
+                       AbsoluteLayout.LayoutBounds="0,0,1,1"
                        AbsoluteLayout.LayoutFlags="All"
+                       Aspect="Fill"
                        Grid.Row="1"/>
 
-                    <!-- Avatar sobreposto -->
-                    <Border BackgroundColor="White"
+                <!-- Avatar sobreposto -->
+
+                <Border BackgroundColor="White"
                         AbsoluteLayout.LayoutBounds="0.5,1,90,90"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
                         ZIndex="1"
                         Grid.Row="1"
                         Grid.Column="0">
 
-                        <Border.StrokeShape>
+                    <Border.StrokeShape>
 
-                            <RoundRectangle CornerRadius="60"/>
+                        <RoundRectangle CornerRadius="60"/>
 
-                        </Border.StrokeShape>
+                    </Border.StrokeShape>
 
-                        <Image Source="download1.jpeg" Aspect="AspectFill"/>
+                    <Image Source="download1.jpeg" Aspect="AspectFill"/>
 
-                    </Border>
+                </Border>
 
-                    <!-- Corpo arredondado -->
-                    <Border BackgroundColor="White"
+                <!-- Corpo arredondado -->
+                <Border BackgroundColor="White"
                         StrokeThickness="0"
-                        AbsoluteLayout.LayoutBounds="0.5,1,1,0.18"
+                        AbsoluteLayout.LayoutBounds="0.5,1,1,0.23"
                         AbsoluteLayout.LayoutFlags="All"
                         ZIndex="0"
                         Grid.Row="1"
                         Grid.Column="0">
 
-                        <Border.StrokeShape>
+                    <Border.Background>
 
-                            <RoundRectangle CornerRadius="40,40,0,0"/>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <!-- Branco no centro -->
+                            <GradientStop Color="White" Offset="0.2" />
+                            <GradientStop Color="LightGray" Offset="0.8" />
+                        </LinearGradientBrush>
 
-                        </Border.StrokeShape>
+                    </Border.Background>
 
-                    </Border>
+                    <Border.StrokeShape>
 
-                </AbsoluteLayout>
+                        <RoundRectangle CornerRadius="40,40,0,0"/>
 
-            </FlexLayout>
+                    </Border.StrokeShape>
+
+                </Border>
+
+            </AbsoluteLayout>
 
             <!-- Stack para os carrosseis -->
-            <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,*,*,*" ColumnDefinitions="*" AbsoluteLayout.LayoutBounds="0.5,1,1,1">
+            <Grid Grid.Row="2" RowDefinitions="250,125,250,125" BackgroundColor="White">
 
                 
                 <!-- OFERTAS DA SEMANA -->
-                <Grid RowDefinitions="Auto,Auto"
-                      ColumnDefinitions="*"
-                      Grid.Row="0"
-                      Grid.Column="0"
-                      BackgroundColor="LightGray">
+                <Grid RowDefinitions="70,180"
+                      BackgroundColor="LightGray"
+                      Grid.Row="0">
 
                     <Label Text="!OFERTAS DA SEMANA!"
                            FontSize="18"
                            FontAttributes="Bold"
                            HorizontalOptions="Center"
-                           Grid.Row="0"
-                           Grid.Column="0"/>
+                           VerticalOptions="Center"
+                           Grid.Row="0"/>
 
-                    <CollectionView Grid.Row="1"
-                                        Grid.Column="0"
-                                        ItemsSource="{Binding Ofertas}"
-                                        ItemsLayout="HorizontalList">
+                    <!-- Carrossel -->
+                    <CarouselView ItemsSource="{Binding Comidas}"
+                                  IndicatorView="indicator"
+                                  BackgroundColor="LightGray"
+                                  Loop="True"
+                                  HeightRequest="180"
+                                  Grid.Row="1">
 
-                        <CollectionView.ItemTemplate>
-
+                        <CarouselView.ItemTemplate>
+                        
                             <DataTemplate>
-
-                                <Border WidthRequest="140"
-                                                HeightRequest="160"
-                                                BackgroundColor="White"
-                                                StrokeShape="RoundRectangle 20">
-
-                                    <VerticalStackLayout>
-
+                                
+                                <Border StrokeShape="RoundRectangle 20"
+                                    BackgroundColor="White"
+                                    Margin="10"
+                                    Shadow="5">
+                        
+                                    <VerticalStackLayout Spacing="5">
+                            
                                         <Image Source="{Binding Imagem}"
-                                                       HeightRequest="110"
-                                                       Aspect="AspectFill"/>
-
+                                               HeightRequest="160"
+                                               Aspect="AspectFill"
+                                               HorizontalOptions="Center"/>
+                                    
                                         <Label Text="{Binding Nome}"
-                                                       FontSize="14"
-                                                       FontAttributes="Bold"
-                                                       HorizontalOptions="Center"/>
-
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"/>
+                            
                                         <Label Text="{Binding Descricao}"
-                                                       FontSize="12"
-                                                       HorizontalOptions="Center"
-                                                       LineBreakMode="TailTruncation"/>
-
+                                               FontSize="14"
+                                               HorizontalOptions="Center"
+                                               TextColor="Gray"/>
+                        
                                     </VerticalStackLayout>
-
+                    
                                 </Border>
-
+                
                             </DataTemplate>
+            
+                        </CarouselView.ItemTemplate>
+        
+                    </CarouselView>
 
-                        </CollectionView.ItemTemplate>
-
-                    </CollectionView>
+                    <!-- Indicador de bolinhas -->
+                    <IndicatorView x:Name="indicator"
+                                   IndicatorColor="White"
+                                   Grid.Row="1"
+                                   VerticalOptions="End"
+                                   Margin="2"
+                                   SelectedIndicatorColor="Black"
+                                   HorizontalOptions="Center"/>
 
                 </Grid>
 
-                <BoxView BackgroundColor="Transparent" Grid.Row="1"></BoxView>
+                <!-- Espaço entre os collectionView -->
+
+                <BoxView Grid.Row="1">
+                    
+                    <BoxView.Background>
+
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+
+                            <GradientStop Color="Transparent" Offset="0.3" />
+                           
+                            <GradientStop Color="LightGray" Offset="1" />
+                        
+                        </LinearGradientBrush>
+                    
+                    </BoxView.Background>
+                
+                </BoxView>
+
+                <BoxView Grid.Row="1">
+                    
+                    <BoxView.Background>
+
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+
+                            <GradientStop Color="Transparent" Offset="0.3" />
+                            
+                            <GradientStop Color="LightGray" Offset="1" />
+                        
+                        </LinearGradientBrush>
+                    
+                    </BoxView.Background>
+                
+                </BoxView>
 
                 <!-- RODÍZIO EM CASA -->
-                <Grid RowDefinitions="Auto,Auto"
+                
+                <Grid RowDefinitions="70,180"
                       BackgroundColor="LightGray"
-                      Padding="10"
-                      Grid.Row="2"
-                      Grid.Column="0">
+                      Grid.Row="2">
 
                     <Label Text="RODÍZIO EM CASA"
-                               FontSize="18"
-                               FontAttributes="Bold"
-                               HorizontalOptions="Center"
-                               Grid.Row="0"/>
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Grid.Row="0"/>
 
-                    <CollectionView Grid.Row="1"
-                                        ItemsSource="{Binding Rodizio}"
-                                        ItemsLayout="HorizontalList"
-                                        HeightRequest="180"
-                                        Margin="0,10">
+                    <!-- Carrossel -->
+                    <CarouselView ItemsSource="{Binding Comidas}"
+                                  IndicatorView="indicator1"
+                                  Loop="True"
+                                  HeightRequest="180"
+                                  Grid.Row="1">
 
-                        <CollectionView.ItemTemplate>
-
+                        <CarouselView.ItemTemplate>
+                            
                             <DataTemplate>
-
-                                <Border WidthRequest="140"
-                                            HeightRequest="160"
-                                            BackgroundColor="White"
-                                            StrokeShape="RoundRectangle 20">
-
-                                    <VerticalStackLayout>
-
+                                
+                                <Border StrokeShape="RoundRectangle 20"
+                                        BackgroundColor="White"
+                                        Margin="10"
+                                        Shadow="5">
+                                    
+                                    <VerticalStackLayout Spacing="5">
+                                        
                                         <Image Source="{Binding Imagem}"
-                                                   HeightRequest="110"
-                                                   Aspect="AspectFill"/>
-
+                                               HeightRequest="160"
+                                               Aspect="AspectFill"
+                                               HorizontalOptions="Center"/>
+                                        
                                         <Label Text="{Binding Nome}"
-                                                   FontSize="14"
-                                                   FontAttributes="Bold"
-                                                   HorizontalOptions="Center"/>
-
+                                               FontSize="18"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center"/>
+                                        
                                         <Label Text="{Binding Descricao}"
-                                                   FontSize="12"
-                                                   HorizontalOptions="Center"
-                                                   LineBreakMode="TailTruncation"/>
-
+                                               FontSize="14"
+                                               HorizontalOptions="Center"
+                                               TextColor="Gray"/>
+                                    
                                     </VerticalStackLayout>
-
+                                
                                 </Border>
-
+                            
                             </DataTemplate>
+                        
+                        </CarouselView.ItemTemplate>
+                    
+                    </CarouselView>
 
-                        </CollectionView.ItemTemplate>
+                    <!-- Indicador de bolinhas -->
+                    
+                    <IndicatorView x:Name="indicator1"
+                                   IndicatorColor="White"
+                                   Grid.Row="1"
+                                   VerticalOptions="End"
+                                   Margin="2"
+                                   SelectedIndicatorColor="Black"
+                                   HorizontalOptions="Center"/>
 
-                    </CollectionView>
 
                 </Grid>
 
-                <BoxView BackgroundColor="Transparent" Grid.Row="3"></BoxView>
+                <BoxView Grid.Row="3">
+                    
+                    <BoxView.Background>
+
+                        <LinearGradientBrush StartPoint="0,1" EndPoint="0,0">
+
+                            <GradientStop Color="Transparent" Offset="0.3" />
+                            
+                            <GradientStop Color="LightGray" Offset="1" />
+                       
+                        </LinearGradientBrush>
+                   
+                    </BoxView.Background>
+                
+                </BoxView>
+
+                <BoxView Grid.Row="3">
+                    
+                    <BoxView.Background>
+                        
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+
+                            <GradientStop Color="Transparent" Offset="0.3" />
+                           
+                            <GradientStop Color="LightGray" Offset="1" />
+                        
+                        </LinearGradientBrush>
+                    
+                    </BoxView.Background>
+                
+                </BoxView>
 
             </Grid>
 
