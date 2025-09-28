@@ -20,35 +20,6 @@ namespace Yukki
 
         public List<SushiItem> Comidas { get; set; }
 
-        private double _windowHeight;
-        private double _windowWidth;
-
-        public double WindowHeight
-        {
-            get => _windowHeight;
-            set
-            {
-                if (_windowHeight != value)
-                {
-                    _windowHeight = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public double WindowWidth
-        {
-            get => _windowWidth;
-            set
-            {
-                if (_windowWidth != value)
-                {
-                    _windowWidth = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
         public MainPage()
         {
 
@@ -65,15 +36,6 @@ namespace Yukki
 
             BindingContext = this;
 
-        }
-
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-
-
-            WindowHeight = height * 1.4;
-            WindowWidth = width * 1;
         }
 
         // ---------- CLICK HANDLERS ADICIONADOS ----------
