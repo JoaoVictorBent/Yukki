@@ -3,83 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Yukki.MainPage"
              BackgroundColor="White"
-             Shell.NavBarIsVisible="False"
+             Shell.NavBarIsVisible="True"
              Padding="0">
 
-    <ScrollView VerticalScrollBarVisibility="Never">
+    <ScrollView VerticalScrollBarVisibility="Never" Scrolled="OnScrolled">
 
         <Grid x:Name="Window">
 
             <Grid.RowDefinitions>
 
-                <RowDefinition Height="250"/>
+                <RowDefinition Height="200"/>
                 <RowDefinition Height="*"/>
 
             </Grid.RowDefinitions>
 
-            <!-- Header -->
+            <!-- capa e informaçoes -->
 
-            <Grid Grid.Row="0"
-                  ZIndex="1"
-                  x:Name="Header">
-
-                <Grid.RowDefinitions>
-
-                    <RowDefinition Height="50"/>
-                    <RowDefinition Height="200"/>
-
-                </Grid.RowDefinitions>
-
-                <Grid BackgroundColor="Yellow" x:Name="Menu">
-
-                    <Grid.ColumnDefinitions>
-
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="40"/>
-                        <ColumnDefinition Width="50"/>
-
-                    </Grid.ColumnDefinitions>
-
-                    <ImageButton Source="menu_aberto.png"
-                                 Padding="5"
-                                 HeightRequest="40"
-                                 WidthRequest="40"
-                                 MinimumHeightRequest="1"
-                                 MinimumWidthRequest="1"
-                                 HorizontalOptions="Center"
-                                 BackgroundColor="Transparent"                                 
-                                 Clicked="OnMenuClicked"/>
-
-                    <ImageButton Source="bolsa_compras.png" 
-                                 Padding="5"
-                                 HeightRequest="40"
-                                 WidthRequest="40"
-                                 MinimumHeightRequest="1"
-                                 MinimumWidthRequest="1"
-                                 Grid.Column="2" 
-                                 BackgroundColor="Transparent" 
-                                 Clicked="OnCartClicked"/>
-
-                    <Border Grid.Column="3" 
-                            BackgroundColor="White" 
-                            HeightRequest="40" 
-                            WidthRequest="40">
-
-                        <Border.StrokeShape>
-
-                            <RoundRectangle CornerRadius="90"/>
-
-                        </Border.StrokeShape>
-
-                    </Border>
-
-                </Grid>
+            <Grid ZIndex="1"
+                  x:Name="Header"
+                  HeightRequest="200">
 
                 <!-- Capa -->
 
                 <Image Source="download2.jpeg"
-                       Grid.Row="1"
                        Aspect="Fill"
                        x:Name="Cover"/>
 
@@ -91,7 +37,6 @@
                         VerticalOptions="End"
                         StrokeThickness="0"
                         ZIndex="1"
-                        Grid.Row="1"
                         x:Name="Superimposed_avatar">
 
                     <Border.StrokeShape>

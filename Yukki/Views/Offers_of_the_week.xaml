@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Yukki.Views.Offers_of_the_week"
+             xmlns:local="clr-namespace:Yukki.Drawables"
+             Title="Offers_of_the_week">
+    <VerticalStackLayout>
+
+        <!-- Aqui entra o desenho da onda -->
+        <GraphicsView HeightRequest="200">
+            
+            <GraphicsView.Drawable>
+                <local:WaveDrawable />
+            </GraphicsView.Drawable>
+        </GraphicsView>
+
+        <!-- Conteúdo abaixo -->
+        <Label Text="Yakissoba"
+               FontSize="24"
+               HorizontalOptions="Center"
+               Margin="0,20,0,0"/>
+    </VerticalStackLayout>
+</ContentPage>

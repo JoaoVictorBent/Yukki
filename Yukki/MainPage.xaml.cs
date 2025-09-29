@@ -20,6 +20,8 @@ namespace Yukki
 
         public List<SushiItem> Comidas { get; set; }
 
+        private double _lastScrollY = 0;
+
         public MainPage()
         {
 
@@ -36,6 +38,19 @@ namespace Yukki
 
             BindingContext = this;
 
+        }
+
+        private void OnScrolled(object sender, ScrolledEventArgs e)
+        {
+            // Quando rolar pra baixo, some
+            if (e.ScrollY > _lastScrollY )
+                Shell.SetNavBarIsVisible(this, false);
+
+            // Quando rolar pra cima, volta
+            if (e.ScrollY < _lastScrollY)
+                Shell.SetNavBarIsVisible(this, true);
+
+            _lastScrollY = e.ScrollY;
         }
 
         // ---------- CLICK HANDLERS ADICIONADOS ----------

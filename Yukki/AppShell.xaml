@@ -3,16 +3,68 @@
     x:Class="Yukki.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Yukki.Views"
     xmlns:local="clr-namespace:Yukki"
     Title=""
     FlyoutBehavior="Flyout"
+    BackgroundColor="Yellow"
     >
 
-    <FlyoutItem Title="Início" Icon="menu.png">
+    <Shell.TitleView>
+        <Grid HeightRequest="60"
+              Padding="10"
+              ColumnDefinitions="*,30,30">
+
+            <!-- Ícone sacola -->
+            <ImageButton Source="bolsa_compras.png"
+                         HeightRequest="28"
+                         WidthRequest="28"
+                         Margin="0,0,30,0"
+                         MinimumHeightRequest="1"
+                         MinimumWidthRequest="1"
+                         BackgroundColor="Transparent"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Grid.Column="1"/>
+
+            <!-- Avatar -->
+            <Border Grid.Column="2"
+                    BackgroundColor="White"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20"/>
+                </Border.StrokeShape>
+
+                <!-- Aqui você pode colocar uma imagem de perfil -->
+                <!--<Image Source="perfil.png" Aspect="AspectFill"/>-->
+            </Border>
+
+        </Grid>
+    </Shell.TitleView>
+
+    <!-- Exemplo: menu lateral (Flyout) -->
+    <FlyoutItem Title="Início" Icon="home.png">
         <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
     </FlyoutItem>
 
-    <!-- Rota para sacola (exemplo simples) -->
-    <ShellContent Title="CartPage" Route="Cart" ContentTemplate="{DataTemplate local:CartPage}" />
+    <FlyoutItem Title="Ofertas da semana" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Offers_of_the_week}" />
+    </FlyoutItem>
 
+    <FlyoutItem Title="Início" Icon="home.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Cart_Page}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Pedidos" Icon="orders.png">
+        <ShellContent ContentTemplate="{DataTemplate views:Order_page}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Configurações" Icon="settings.png">
+        <ShellContent ContentTemplate="{DataTemplate views:settings_page}" />
+    </FlyoutItem>
+    
 </Shell>
